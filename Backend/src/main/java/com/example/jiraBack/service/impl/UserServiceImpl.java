@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
                         .orElseThrow(ChangeSetPersister.NotFoundException::new)
         );
     }
-    // починить get не фурычит
+
     @Override
     @Transactional
     public UserDto getUserByEmail(String email) {

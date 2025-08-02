@@ -16,8 +16,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-// доработать
-
 @Component
 public class JwtService {
     private static final Logger LOGGER = LogManager.getLogger(JwtService.class);

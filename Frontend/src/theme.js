@@ -1,6 +1,8 @@
 export const theme = {
     colors: {
         white: '#fff',
+        back100: '#37383b',
+        gray200: '#a9abaf',
         gray300: '#d1d5db',
         gray700: '#333',
         primary: '#14b8a6',
@@ -28,6 +30,9 @@ export const theme = {
         semibold: 500,
         bold: 600,
     },
+    backGroundColor: {
+        mainColort: '#faf7fe',
+    }
 }
 
 // export const lightTheme = {

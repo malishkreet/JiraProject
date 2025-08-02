@@ -9,7 +9,7 @@ export const useProfile = () => {
 
 
     useEffect(() => {
-        console.log(">>> useProfile, token=", accessToken);
+        // console.log(">>> useProfile, token=", accessToken);
         if (!accessToken) {
             setProfile(null);
             setLoading(false);
@@ -25,10 +25,10 @@ export const useProfile = () => {
                     },
                     credentials: "include",
                 });
-                console.log(">>> статус профиля", res.status);
+                // console.log(">>> статус профиля", res.status);
                 if (!res.ok) throw new Error("Failed to fetch profile");
                 const data = await res.json();
-                console.log("PROFILE DATA:", data);
+                // console.log("PROFILE DATA:", data);
                 setProfile(data);
             } catch (e) {
                 console.error(e);
@@ -37,7 +37,6 @@ export const useProfile = () => {
             }
         })();
     }, [accessToken]);
-
 
 
     return { profile, loading };

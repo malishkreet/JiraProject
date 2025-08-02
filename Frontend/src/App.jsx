@@ -30,7 +30,7 @@ const AppLayout = ({ children }) => {
         <>
             <Header toggleSidebar={toggleSidebar}
                 toggleProfilebar={toggleProfilebar} />
-            <ProfileBar isOpen={isProfileOpen} />
+            <ProfileBar isOpen={isProfileOpen} onClose={() => setProfileOpen(false)} />
             <Main>
                 <Sidebar isOpen={isSidebarOpen} />
                 <Content>
@@ -39,9 +39,6 @@ const AppLayout = ({ children }) => {
 
             </Main>
 
-            {/* <ContainerWrapper>
-                left = {isSidebarOpen ? 240 : 0}
-            </ContainerWrapper> */}
         </>
     )
 }
@@ -49,13 +46,9 @@ const Main = styled.main`
     display: flex;
 `
 
-const Content = styled.div`
+const Content = styled.section`
     flex: 1;
 `
-
-// const ContainerWrapper = styled.div`
-//     margin-left: ${props => props.left}px;
-// `
 
 function App() {
 

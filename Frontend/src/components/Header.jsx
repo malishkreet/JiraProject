@@ -22,10 +22,12 @@ const Header = ({ toggleSidebar, toggleProfilebar }) => {
                 {/* <div>
                             serch в дальнейшем 
                         </div> */}
+                <div>
+                    <ButtonBar onClick={toggleProfilebar}>
+                        <ImageLogo src={profileLogo} alt="Profile Bar" />
+                    </ButtonBar>
+                </div>
 
-                <ButtonBar onClick={toggleProfilebar}>
-                    <ImageLogo src={profileLogo} alt="Profile Bar" />
-                </ButtonBar>
             </Menu>
 
             {/* </Container> */}

@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled"
 import { AuthProvider, useAuth } from "../context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { useProfile } from "../hooks/useProfile";
 import profileLogo from "../assets/images/ProfileLogo.svg"
+import logoutMenu from "../assets/images/LogoutMenu.svg"
+import profileMenu from '../assets/images/ProfileMenu.svg'
+import { theme } from "../theme";
 
-export const ProfileBar = ({ isOpen }) => {
+export const ProfileBar = ({ isOpen, onClose }) => {
 
     const { profile, loading } = useProfile();
     const { logout } = useAuth();
@@ -22,59 +25,128 @@ export const ProfileBar = ({ isOpen }) => {
     return (
         <Bar isOpen={isOpen}>
             <InfoProfile>
-                <div>
+                <span>
                     <ProfileLogoImage src={profileLogo} alt="#" />
-                </div>
-                <div>
-                    <div>{profile?.firstName || "Имя не указано"}</div>
-                    <div>{profile?.email || "Email не указан"}</div>
-                </div>
+                </span>
+                <InfoProfileme>
+                    <InfoProfileName>{profile?.firstName || "Имя не указано"}</InfoProfileName>
+                    <InfoProfileEmail>{profile?.email || "Email не указан"}</InfoProfileEmail>
+                </InfoProfileme>
             </InfoProfile>
+
+            <ButtonMenu>
+                <ButtonLink to={'/profile'} onClick={onClose}>
+                    <span>
+                        <MenuImageElement src={profileMenu} alt="#Pf" />
+                    </span>
+                    <MenuTextElement>Профиль</MenuTextElement>
+                </ButtonLink>
+            </ButtonMenu>
+            {/* 
             <div>
                 <span>
                     <img src="#" alt="#Pf" />
-                </span>
-                <div>Профиль</div>
-            </div>
-            <div>
-                <span>
-                    <img src="#" alt="#Pf" />
-                </span>
-                <div>Настройка аккаунта</div>
-            </div>
+                </span>  
+                <span>Настройка аккаунта</span>
+                // TODO реализовать когда настрою бэк
+            </div> */}
 
-            <span></span>
+            <ul></ul>
 
-            <button onClick={handleLogout}>
-                Выйти
-            </button>
+            <ButtonMenu>
+                <ButtonLink onClick={handleLogout} >
+                    <span>
+                        <MenuImageElement src={logoutMenu} alt="" />
+                    </span>
+                    <MenuTextElement>Выйти</MenuTextElement>
+
+                </ButtonLink>
+            </ButtonMenu>
+
+
 
         </Bar>
     )
 
 }
 // ===== STYLES =====
+const ProfileImageBlock = styled.span`
+    display: flex;
+    align-items: center;
+`
+const MenuTextElement = styled.span`
+    font-size: 1rem;
+    width: 100%;
+    margin-left: 8px;
+`
+
+const MenuImageElement = styled.img`
+    width: 1.2rem;
+    height: 1.2rem;
+`
+
+const ButtonMenu = styled.div`
+
+
+
+`
+
+const ButtonLink = styled(Link)`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    &:hover {
+        background-color: #37383b;
+    }
+ 
+`
+
 const ProfileLogoImage = styled.img`
     width: 4rem;
     height: 4rem;
+`
+
+const InfoProfileName = styled.h3`
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    
+`
+const InfoProfileEmail = styled.p`
+    font-size: 0.875rem;
+    font-weight: ${theme.fontWeights.medium};
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+`
+
+const InfoProfileme = styled.div`
+    margin: 9px 0px 9px 16px;
 `
 
 const InfoProfile = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     background-color: #18191a;
-    padding: 0.9rem;
-
+    margin: 7px 7px 7px 7px;
+    padding: 0.8rem;
+    border-radius: 5px;
 `
 
 const Bar = styled.div`
 
-    
+    display: ${props => (props.isOpen ? 'block' : 'none')};
     position: fixed;
     width: 310px;
-    padding: 0.5rem;
+
     top: 44px;
     right: 0;
     box-shadow: -5px 6px 9px -4px rgba(99, 108, 114, 0.2);
@@ -83,7 +155,4 @@ const Bar = styled.div`
     background: #2a2a2d;
     overflow: hidden;
     transition: width 0.3s ease-in-out;
-  transform-origin: right;
-  transition: transform 0.3s ease-in-out;
-  transform: ${props => (props.isOpen ? 'scaleX(1)' : 'scaleX(0)')};
     `

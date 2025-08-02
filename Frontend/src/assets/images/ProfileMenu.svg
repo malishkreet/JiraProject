@@ -1,0 +1,7 @@
+<svg width="24" height="24" viewBox="0 0 16 16"
+     xmlns="http://www.w3.org/2000/svg">
+  <!-- Голова -->
+  <circle cx="8" cy="5" r="4" fill="#bfc1c4"/>
+  <!-- Плечи -->
+  <path d="M2 16 C2 7 14 7 14 16 Z" fill="#bfc1c4"/>
+</svg>
