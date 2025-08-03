@@ -43,7 +43,7 @@ export const EmailIcon = () => {
     return (
         <svg width="24" height="24" viewBox="-4 -4 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            fill="#bfc1c4" fill-rule="evenodd" clip-rule="evenodd">
+            fill="#bfc1c4" fillRule="evenodd" clipRule="evenodd">
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 
            2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-.5a.5.5 0 
            0 0-.5.5v.529L8 8.128l6.5-3.6V4a.5.5 0 0 

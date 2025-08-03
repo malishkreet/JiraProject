@@ -2,6 +2,7 @@ package com.example.jiraBack.mapper;
 
 import com.example.jiraBack.dto.UserDto;
 import com.example.jiraBack.dto.UserProfileDto;
+import com.example.jiraBack.entity.User;
 import com.example.jiraBack.entity.UserProfile;
 import org.springframework.stereotype.Component;
 
@@ -23,9 +24,9 @@ public class UserProfileMapper {
     }
 
     public void updateUserProfile(UserProfileDto userProfileDto, UserProfile userProfile) {
-        userProfile.setPostUsers(userProfileDto.getPostUsers());
-        userProfile.setDepartmentUser(userProfileDto.getDepartmentUser());
-        userProfile.setLocationUsers(userProfileDto.getLocationUsers());
-        userProfile.setOrganizationUsers(userProfileDto.getOrganizationUsers());
+        if (userProfileDto.getPostUsers() != null)userProfile.setPostUsers(userProfileDto.getPostUsers());
+        if (userProfileDto.getDepartmentUser() != null) userProfile.setDepartmentUser(userProfileDto.getDepartmentUser());
+        if (userProfileDto.getLocationUsers() != null) userProfile.setLocationUsers(userProfileDto.getLocationUsers());
+        if (userProfileDto.getOrganizationUsers() != null) userProfile.setOrganizationUsers(userProfileDto.getOrganizationUsers());
     }
 }
